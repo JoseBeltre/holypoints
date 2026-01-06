@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     '~/assets/css/fonts.css',
     '~/assets/css/main.css',
   ],
-  modules: [],
+  modules: ['@nuxt/eslint'],
   vite: {
     plugins: [
       tailwindcss()
