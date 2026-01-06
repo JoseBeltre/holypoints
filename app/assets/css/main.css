@@ -2,6 +2,7 @@
 
 @theme {
   --font-default: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-jolly: "Jolly Lodger", cursive;
 
   --color-primary-50: #EAFAFB;
@@ -27,4 +28,18 @@
   --color-secondary-800: #603D06;
   --color-secondary-900: #301F03;
   --color-secondary-950: #221602;
+}
+
+@layer {
+  .login-lbl {
+    @apply font-medium ps-2 cursor-pointer;
+  }
+
+  .login-input {
+    @apply border-3 rounded-xl p-3 bg-black/9 w-86 focus:border-secondary-300 focus:text-secondary-200 focus:outline-none shadow-inner shadow-black/35 drop-shadow-md drop-shadow-black/25 transition-colors;
+  }
+
+  .login-btn {
+    @apply rounded-xl p-3 bg-secondary-300 border-4 border-secondary-300 text-black font-black transition-colors drop-shadow-md drop-shadow-black/25 hover:shadow-[inset_-3px_3px_7px_2px] hover:shadow-black/20 hover:text-black/60 cursor-pointer my-2;
+  }
 }
