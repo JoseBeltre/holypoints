@@ -8,10 +8,13 @@ export default defineNuxtConfig({
     '~/assets/css/fonts.css',
     '~/assets/css/main.css',
   ],
-  modules: ['@nuxt/eslint'],
+  modules: ['@nuxt/eslint', 'nuxt-lucide-icons'],
   vite: {
     plugins: [
       tailwindcss()
     ]
+  },
+  lucide: {
+    namePrefix: 'Icon'
   }
 })
