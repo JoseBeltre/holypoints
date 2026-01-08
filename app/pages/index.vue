@@ -9,7 +9,7 @@
       <h1 class="m-0! page-title">Bienvenido</h1>
       <p class="page-subtitle">Aquí un resumen de tus jóvenes 👇</p>
     </header>
-    <main class="grid gap-4 mt-3 mb-20">
+    <main class="grid gap-4 mt-3">
       <!-- Cards de resumen -->
       <div class="grid gap-4">
         <KpiCard :stat="3000" text="Holypoints Reclamados">

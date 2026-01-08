@@ -52,7 +52,7 @@
   }
 
   .rounded-box {
-    @apply border-2 rounded-2xl border-black/20 p-4 pt-2 shadow-md;
+    @apply border rounded-2xl border-black/20 p-4 pt-2 shadow-md;
   }
 
   .nav-selected {
