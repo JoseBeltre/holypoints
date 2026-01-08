@@ -58,4 +58,12 @@
   .nav-selected {
     @apply relative text-secondary-500 before:bg-secondary-200 before:rounded-full before:border-3 before:border-secondary-300 transition-all duration-300 before:size-14 before:absolute before:top-1/2 before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:-z-10;
   }
+  
+  .page-title {
+    @apply text-4xl font-bold tracking-tight leading-6 mt-5;
+  }
+  
+  .page-subtitle {
+    @apply font-light text-gray-600;
+  }
 }

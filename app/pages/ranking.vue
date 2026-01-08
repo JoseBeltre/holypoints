@@ -1,5 +1,6 @@
 <template>
   <div>
-    <h1>Ranking</h1>
+    <h1 class="page-title">Tabla de Puntuaciones</h1>
+    <p class="page-subtitle">Líderes en Holypoints</p>
   </div>
 </template>

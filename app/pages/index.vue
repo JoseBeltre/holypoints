@@ -1,12 +1,14 @@
 <template>
-  <div class="px-4 py-5 tracking-tighter">
-    <header class="flex justify-end w-full gap-2 tracking-tighter">
+  <div>
+    <nav class="flex justify-end w-full gap-2 tracking-tighter">
       <h3>Juan Carlos Ramos</h3>
       <IconSettings />
-    </header>
+    </nav>
     <!-- Texto de bienvenido dinamico -->
-    <h1 class="text-4xl font-bold tracking-tight leading-5">Bienvenido</h1>
-    <p class="font-light text-black/60">Aquí un resumen de tus jovenes <span class="text-white">👇</span></p>
+    <header>
+      <h1 class="m-0! page-title">Bienvenido</h1>
+      <p class="page-subtitle">Aquí un resumen de tus jóvenes 👇</p>
+    </header>
     <main class="grid gap-4 mt-3 mb-20">
       <!-- Cards de resumen -->
       <div class="grid gap-4">
@@ -36,9 +38,9 @@
           </button>
         </div>
       </div>
-      <!-- Lider en Holypoints -->
+      <!-- Líder en Holypoints -->
       <div class="rounded-box">
-        <h2 class="text-secondary-500 font-bold text-2xl mb-2">Lider en Holypoints</h2>
+        <h2 class="text-secondary-500 font-bold text-2xl mb-2">Líder en Holypoints</h2>
         <TopYouth name="Noel Rodriguez" :points="421" />
       </div>
     </main>
