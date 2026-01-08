@@ -2,6 +2,10 @@
 import AdventistasLogo from '@/assets/images/isotipo_adventistas_logo.png'
 import JALogo from '@/assets/images/ja_logo.png'
 
+definePageMeta({
+  layout: false
+})
+
 </script>
 <template>
   <div class="bg-primary-600 min-h-screen flex flex-col items-center justify-center text-white">

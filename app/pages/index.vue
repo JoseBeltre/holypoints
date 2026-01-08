@@ -7,7 +7,7 @@
     <!-- Texto de bienvenido dinamico -->
     <h1 class="text-4xl font-bold tracking-tight leading-5">Bienvenido</h1>
     <p class="font-light text-black/60">Aquí un resumen de tus jovenes <span class="text-white">👇</span></p>
-    <main class="grid gap-4 mt-3">
+    <main class="grid gap-4 mt-3 mb-20">
       <!-- Cards de resumen -->
       <div class="grid gap-4">
         <KpiCard :stat="3000" text="Holypoints Reclamados">
