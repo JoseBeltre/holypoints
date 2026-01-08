@@ -42,4 +42,16 @@
   .login-btn {
     @apply rounded-xl p-3 bg-secondary-300 border-4 border-secondary-300 text-black font-black transition-colors drop-shadow-md drop-shadow-black/25 hover:shadow-[inset_-3px_3px_7px_2px] hover:shadow-black/20 hover:text-black/60 cursor-pointer my-2;
   }
+  
+  .shortcut-btn {
+    @apply flex p-2 py-3 justify-center border-2 border-primary-600 bg-primary-600/30 rounded-xl text-primary-600 font-medium relative overflow-hidden hover:bg-primary-600 hover:text-white hover:shadow-[inset_-3px_3px_7px_2px] hover:shadow-black/20 transition-colors cursor-pointer;
+  }
+
+  .shortcut-btn > svg {
+    @apply absolute top-0 left-2 size-16 -rotate-10;
+  }
+
+  .rounded-box {
+    @apply border-2 rounded-2xl border-black/20 p-4 pt-2 shadow-md;
+  }
 }
