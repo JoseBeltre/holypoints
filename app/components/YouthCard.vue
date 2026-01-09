@@ -14,8 +14,8 @@ defineProps<{
       </div>
     </div>
     <div class="flex flex-col justify-center">
-      <h2 class="text-lg leading-5">{{ name }}</h2>
-      <p class="leading-5 text-lg font-bold text-secondary-400 flex items-center gap-1">
+      <h2 class="leading-5">{{ name }}</h2>
+      <p class="leading-5 font-bold text-secondary-400 flex items-center gap-1">
         {{ points }}
         <IconHolypoint :size="18" :strokeWidth="1.5" />
       </p>
