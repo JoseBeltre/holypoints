@@ -1,8 +1,12 @@
+<script setup lang="ts">
+useHead({
+  title: 'Inicio - Holypoints'
+})
+</script>
 <template>
   <div>
     <nav class="flex justify-end w-full gap-2 tracking-tighter">
-      <h3>Juan Carlos Ramos</h3>
-      <IconSettings />
+      <h3 class="font-bold text-primary-600">Juan Carlos Ramos</h3>
     </nav>
     <!-- Texto de bienvenido dinamico -->
     <header>

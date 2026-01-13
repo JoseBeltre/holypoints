@@ -17,7 +17,9 @@ const rewards = [
     stock: 5
   }
 ]
-
+useHead({
+  title: 'Recompensas Canjeables - Holypoints'
+})
 </script>
 <template>
   <div>

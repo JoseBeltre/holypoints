@@ -6,9 +6,13 @@ definePageMeta({
   layout: false
 })
 
+useHead({
+  title: 'Iniciar Sesión - Holypoints'
+})
+
 </script>
 <template>
-  <div class="bg-primary-600 min-h-screen flex flex-col items-center justify-center text-white">
+  <div class="bg-primary-600 min-h-dvh flex flex-col items-center justify-center text-white">
     <div class="flex gap-3">
       <img :src="AdventistasLogo" alt="Adventistas Logo">
       <img :src="JALogo" alt="JA Logo">

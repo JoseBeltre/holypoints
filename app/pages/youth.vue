@@ -1,3 +1,8 @@
+<script setup lang="ts">
+useHead({
+  title: 'Jóvenes - Holypoints'
+})
+</script>
 <template>
   <div>
     <header class="mb-2">

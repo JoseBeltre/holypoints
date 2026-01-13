@@ -19,6 +19,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
+      title: 'Holypoints',
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
         { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon/favicon-32x32.png' },
