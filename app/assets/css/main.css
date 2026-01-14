@@ -28,6 +28,21 @@
   --color-secondary-800: #603D06;
   --color-secondary-900: #301F03;
   --color-secondary-950: #221602;
+
+  --color-fromGold: #FFD3A7;
+  --color-toGold: #ffb035;
+  --color-nameGold: #C3851F;
+  --color-pointsGold: #9f690f;
+
+  --color-fromSilver: #e6e6e6;
+  --color-toSilver: #919190;
+  --color-nameSilver: #818181;
+  --color-pointsSilver: #474747;
+
+  --color-fromBronze: #fcbf99;
+  --color-toBronze: #bc6d3b;
+  --color-nameBronze: #9E4711;
+  --color-pointsBronze: #8b3e0f;
 }
 
 @layer {
@@ -69,5 +84,54 @@
   
   .page-subtitle {
     @apply font-light text-gray-600;
+  }
+
+  .winners-base {
+    @apply flex items-center gap-3 bg-linear-160 ps-20 p-4 justify-between rounded-2xl relative self-end w-[calc(100%-1rem)] from-20%;
+  }
+
+  .winners-base > h3 {
+    @apply text-2xl font-medium;
+  }
+  .winners-base > div {
+    @apply text-end;
+  }
+  .winners-base > div > h3 {
+    @apply text-4xl font-bold leading-8;
+  }
+  .winners-base > div > p {
+    @apply leading-3;
+  }
+
+  .winners-img {
+    @apply rounded-full overflow-hidden size-22 absolute -left-4 border-4;
+  }
+
+  .ranking-base-wrapper {
+    @apply flex items-center gap-7 ps-4;
+  }
+
+  .ranking-base {
+    @apply flex items-center gap-3 rounded-2xl relative self-end w-[calc(100%-1rem)] border border-black/40 p-4 pe-4 ps-16 justify-between;
+  }
+
+  .ranking-base > h3 {
+    @apply text-lg font-medium;
+  }
+
+  .ranking-base > div {
+    @apply text-end;
+  }
+
+  .ranking-base > div > h3 {
+    @apply text-2xl font-bold leading-5;
+  }
+
+  .ranking-base > div > p {
+    @apply leading-3;
+  }
+
+  .ranking-img {
+    @apply size-16 rounded-full overflow-hidden border-2 border-black/40 absolute -left-4;
   }
 }
