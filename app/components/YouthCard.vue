@@ -9,9 +9,7 @@ defineProps<{
   <div class="rounded-box flex items-center p-2! px-4! gap-3 shadow-sm!">
     <div class="rounded-full overflow-hidden size-14">
       <img v-if="img" class="size-full" :src="img" :alt="'Foto de ' + name">
-      <div v-else class="flex items-center justify-center size-full bg-gray-200 text-primary-600">
-        <IconUserRound class="size-7" :stroke-width="1.5" />
-      </div>
+      <DefaultImg v-else />
     </div>
     <div class="flex flex-col justify-center">
       <h2 class="leading-5">{{ name }}</h2>
