@@ -91,7 +91,7 @@
   }
 
   .winners-base > h3 {
-    @apply text-2xl font-medium;
+    @apply text-xl font-medium;
   }
   .winners-base > div {
     @apply text-end;
