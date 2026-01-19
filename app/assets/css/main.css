@@ -55,7 +55,7 @@
   }
 
   .login-btn {
-    @apply rounded-xl p-3 bg-secondary-300 border-4 border-secondary-300 text-black font-black transition-colors drop-shadow-md drop-shadow-black/25 hover:shadow-[inset_-3px_3px_7px_2px] hover:shadow-black/20 hover:text-black/60 cursor-pointer my-2;
+    @apply flex justify-center items-center rounded-xl p-3 bg-secondary-300 border-4 border-secondary-300 text-black font-black transition-colors drop-shadow-md drop-shadow-black/25 hover:shadow-[inset_-3px_3px_7px_2px] hover:shadow-black/20 hover:text-black/60 cursor-pointer mb-2;
   }
   
   .base-btn {
@@ -133,5 +133,9 @@
 
   .ranking-img {
     @apply size-16 rounded-full overflow-hidden border-2 border-black/40 absolute -left-4;
+  }
+
+  .error-msg {
+    @apply text-red-900 text-sm font-medium text-center bg-red-400/70 py-2 rounded-lg border border-red-700;
   }
 }
