@@ -32,7 +32,7 @@ const user = {
         <SettingsButton to="/">
           Editar Perfil
         </SettingsButton>
-        <SettingsButton>
+        <SettingsButton to="/settings/logs" >
           Registro / Logs
         </SettingsButton>
         <SettingsButton color="red">
