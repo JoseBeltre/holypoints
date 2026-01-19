@@ -1,4 +1,4 @@
-import { auth } from '@/lib/firestore'
+import { auth } from '~/lib/firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 
 export function useAuth() {
