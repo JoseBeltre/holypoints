@@ -12,6 +12,7 @@
   "dependencies": {
     "@nuxt/eslint": "^1.12.1",
     "@tailwindcss/vite": "^4.1.18",
+    "firebase": "^12.8.0",
     "nuxt": "^4.2.2",
     "nuxt-lucide-icons": "2.0.0",
     "tailwindcss": "^4.1.18",
