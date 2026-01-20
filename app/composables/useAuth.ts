@@ -1,10 +1,12 @@
 import { auth } from '~/lib/firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
+import { userStore } from '@/stores/userStore'
 
 export function useAuth() {
   const user = ref<object | null>(null)
   const errorMsg = ref<string>('')
   const isLoading = ref<boolean>(false)
+  const store = userStore()
   
   const setErrorMsg = (msg: string) => {
     errorMsg.value = msg
@@ -23,7 +25,7 @@ export function useAuth() {
     await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       user.value = userCredential.user
-      console.log(user.value)
+      store.setUser(userCredential.user)
       navigateTo('/')
     })
     .catch((error) => {
@@ -34,8 +36,6 @@ export function useAuth() {
       } else {
         setErrorMsg(`Error al iniciar sesión. Código: ${error.code}`)
       }
-    })
-    .finally(() => {
       isLoading.value = false
     })
   }

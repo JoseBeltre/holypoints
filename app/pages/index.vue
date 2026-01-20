@@ -1,12 +1,16 @@
 <script setup lang="ts">
+import { userStore } from '@/stores/userStore'
 useHead({
   title: 'Inicio - Holypoints'
 })
+const store = userStore()
+const { user } = storeToRefs(store)
+
 </script>
 <template>
   <div>
     <nav class="flex justify-end w-full gap-2 tracking-tighter">
-      <h3 class="font-bold text-primary-600">Juan Carlos Ramos</h3>
+      <h3 class="font-bold text-primary-600">{{ user?.email }}</h3>
     </nav>
     <!-- Texto de bienvenido dinamico -->
     <header>
