@@ -1,6 +1,7 @@
-import { auth } from '~/lib/firebase'
+import { auth, db } from '~/lib/firebase'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { userStore } from '@/stores/userStore'
+import { doc, getDoc } from 'firebase/firestore'
 
 export function useAuth() {
   const user = ref<object | null>(null)
@@ -22,13 +23,11 @@ export function useAuth() {
       isLoading.value = false
       return
     }
-    await signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      user.value = userCredential.user
-      store.setUser(userCredential.user)
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password)
       navigateTo('/')
-    })
-    .catch((error) => {
+    } catch (error: any) {
       if (error.code === 'auth/invalid-credential') {
         setErrorMsg('Credenciales inválidas.')
       } else if (error.code === 'auth/invalid-email') {
@@ -37,7 +36,7 @@ export function useAuth() {
         setErrorMsg(`Error al iniciar sesión. Código: ${error.code}`)
       }
       isLoading.value = false
-    })
+    }
   }
 
   return {

@@ -10,7 +10,7 @@ const { user } = storeToRefs(store)
 <template>
   <div>
     <nav class="flex justify-end w-full gap-2 tracking-tighter">
-      <h3 class="font-bold text-primary-600">{{ user?.email }}</h3>
+      <h3 class="font-bold text-primary-600">{{ user?.firstName }}</h3>
     </nav>
     <!-- Texto de bienvenido dinamico -->
     <header>

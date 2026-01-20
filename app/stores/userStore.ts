@@ -1,4 +1,4 @@
-import type { User } from 'firebase/auth'
+import type { User } from '~/types/user'
 
 export const userStore = defineStore('userStore', () => {
   const user = ref<User | null>(null)
