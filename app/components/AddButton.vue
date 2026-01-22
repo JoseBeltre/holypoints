@@ -1,6 +1,11 @@
+<script lang="ts" setup>
+defineProps<{
+  to?: string
+}>()
+</script>
 <template>
-  <button class="base-btn flex-1 bg-secondary-100! border-secondary-300! text-secondary-500! hover:bg-secondary-500! hover:text-secondary-200! text-lg">
+  <NuxtLink :to="to" class="base-btn flex-1 bg-secondary-100! border-secondary-300! text-secondary-500! hover:bg-secondary-500! hover:text-secondary-200! text-lg">
     <IconPlus />
     <slot />
-  </button>
+  </NuxtLink>
 </template>

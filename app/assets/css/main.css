@@ -79,11 +79,11 @@
   }
   
   .page-title {
-    @apply text-4xl font-bold tracking-tight leading-6 mt-5;
+    @apply text-4xl font-bold tracking-tight leading-7 mt-5 mb-1;
   }
   
   .page-subtitle {
-    @apply font-light text-gray-600;
+    @apply font-light text-gray-600 leading-4;
   }
 
   .winners-base {

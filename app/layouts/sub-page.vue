@@ -10,7 +10,7 @@ function goBack() {
 }
 </script>
 <template>
-  <div class="min-h-dvh px-4 py-5 tracking-tighter pb-24">
+  <div class="min-h-dvh px-4 py-5 tracking-tighter">
     <button @click="goBack" class="flex font-bold text-primary-600 cursor-pointer">
       <IconChevronLeft />
       Atrás

@@ -28,7 +28,7 @@ onMounted(async () => {
         <SmallSummaryCard v-else isLogged :stat="users.length">
           <IconUserRound class="size-full" fill="#ffffff" stroke-width="1" />
         </SmallSummaryCard>
-        <AddButton>Registrar Joven</AddButton>
+        <AddButton to="/youth/add" >Registrar Joven</AddButton>
       </section>
       <SearchBar />
       <section class="grid gap-2">

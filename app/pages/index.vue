@@ -40,10 +40,10 @@ const { user } = storeToRefs(store)
             <IconGem stroke-width="1.2" />
             Sumar Holypoints
           </button>
-          <button class="shortcut-btn">
+          <NuxtLink to="/youth/add" class="shortcut-btn">
             <IconUserRoundPlus stroke-width="1.2" />
             Registrar Joven
-          </button>
+          </NuxtLink>
         </div>
       </div>
       <!-- Líder en Holypoints -->
