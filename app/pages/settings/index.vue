@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import SettingsButton from '~/components/SettingsButton.vue';
+import Spinner from '~/components/Spinner.vue';
 
 definePageMeta({
-  layout: 'default-no-padding'
-})
-useHead({
   title: 'Configuración - Holypoints',
+  layout: 'default-no-padding',
+  middleware: ['auth']
 })
 
 const user = {
@@ -13,6 +13,9 @@ const user = {
   role: 'Sub-director de Jóvenes',
   img: 'https://i.pravatar.cc/150?img=3'
 }
+
+const auth = useAuth()
+const { isLoading } = toRefs(auth)
 </script>
 <template>
   <div class="bg-linear-to-b from-primary-600 to-primary-700">
@@ -35,8 +38,9 @@ const user = {
         <SettingsButton to="/settings/logs" >
           Registro / Logs
         </SettingsButton>
-        <SettingsButton color="red">
-          Cerrar Sesión
+        <SettingsButton @click="auth.logOut" color="red">
+          <Spinner v-if="isLoading" />
+          <span v-else>Cerrar sesión</span>
         </SettingsButton>
       </section>
     </main>

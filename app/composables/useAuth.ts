@@ -1,7 +1,6 @@
-import { auth, db } from '~/lib/firebase'
-import { signInWithEmailAndPassword } from 'firebase/auth'
-import { userStore } from '@/stores/userStore'
-import { doc, getDoc } from 'firebase/firestore'
+import { auth } from '~/lib/firebase'
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth'
+
 
 export function useAuth() {
   const user = ref<object | null>(null)
@@ -39,11 +38,25 @@ export function useAuth() {
     }
   }
 
+  const logOut = async () => {
+    isLoading.value = true
+    try {
+      await signOut(auth)
+      store.setUser(null)
+      navigateTo('/login')
+    } catch (error) {
+      console.error(error)
+    } finally {
+      isLoading.value = false
+    }
+  }
+
   return {
     user,
     errorMsg,
     isLoading,
     signIn,
-    setErrorMsg
+    setErrorMsg,
+    logOut
   }
 }
