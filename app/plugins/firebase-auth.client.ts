@@ -10,6 +10,7 @@ export default defineNuxtPlugin(() => {
   onAuthStateChanged(auth, async (firebaseUser) => {
     if (!firebaseUser) {
       store.setUser(null)
+      return
     }
 
     const userRef = doc(db, 'users', firebaseUser!.uid)
