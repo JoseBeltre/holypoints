@@ -1,20 +1,23 @@
 <script lang="ts" setup>
-defineProps<{
-  name: string,
-  points: number,
-  img?: string
+import type { User } from '~/types/user';
+const props = defineProps<{
+  user: User
 }>()
+
+const fullName = computed(() => {
+  return props.user.firstName.split(' ')[0] + ' ' + props.user.lastName?.split(' ')[0]
+})
 </script>
 <template>
   <div class="rounded-box flex items-center p-2! px-4! gap-3 shadow-sm!">
     <div class="rounded-full overflow-hidden size-14">
-      <img v-if="img" class="size-full" :src="img" :alt="'Foto de ' + name">
+      <img v-if="user.photoUrl" class="size-full" :src="user.photoUrl" :alt="'Foto de ' + user.firstName">
       <DefaultImg v-else />
     </div>
     <div class="flex flex-col justify-center">
-      <h2 class="leading-5">{{ name }}</h2>
+      <h2 class="leading-5">{{ fullName }}</h2>
       <p class="leading-5 font-bold text-secondary-400 flex items-center gap-1">
-        {{ points }}
+        {{ '' }}
         <IconHolypoint :size="18" :strokeWidth="1.5" />
       </p>
     </div>
