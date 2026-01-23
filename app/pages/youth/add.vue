@@ -4,18 +4,28 @@ definePageMeta({
   layout: false
 })
 
-const form = ref({
+const { createUser, error } = useUsers()
+const form = reactive({
   firstName: '',
   lastName: '',
-  bornDate: '',
+  birthDate: '',
   address: '',
   email: '',
   phoneNumber: ''
 })
 
-const handleSubmit = () => {
-  console.log(form.value)
-
+const handleSubmit = async () => {
+  const newUserRef = await createUser({
+    firstName: form.firstName,
+    lastName: form.lastName,
+    birthDate: form.birthDate,
+    address: form.address,
+    email: form.email,
+    phoneNumber: form.phoneNumber,
+  })
+  if (newUserRef) {
+    console.log('USUARIO CREADO>  ', newUserRef)
+  }
 }
 </script>
 <template>
@@ -32,16 +42,30 @@ const handleSubmit = () => {
           </div>
           <button class="shortcut-btn py-1! px-10!">Subir foto</button>
         </div>
-        <FloatingInput v-model="form.firstName" name="firstname" text="Nombres" />
-        <FloatingInput v-model="form.lastName" name="lastname" text="Apellidos" />
-        <FloatingInput v-model="form.bornDate" name="borndate" text="Fecha de nacimiento" />
+        <FloatingInput v-model="form.firstName" name="firstname" text="Nombres" required />
+        <FloatingInput v-model="form.lastName" name="lastname" text="Apellidos" required />
+        <FloatingInput v-model="form.birthDate" name="birthDate" text="Fecha de nacimiento" type="date" required />
         <FloatingInput v-model="form.address" name="address" text="Dirección (opcional)" :required="false" />
-        <FloatingInput v-model="form.email" name="email" text="Correo electrónico (opcional)" :required="false" />
-        <FloatingInput v-model="form.phoneNumber" name="phone" text="Numero de celular (opcional)" :required="false" />
+        <FloatingInput v-model="form.email" name="email" text="Correo electrónico (opcional)" type="email"
+          :required="false" />
+        <FloatingInput v-model="form.phoneNumber" name="phone" text="Numero de celular (opcional)" type="phone"
+          :required="false" />
+        <p v-if="error" class="text-red-400 text-center">{{ error }}</p>
         <button class="login-btn drop-shadow-none!">
-          Agregar a "Fulano"
+          <!-- <span>Faltan campos obligatorios</span> -->
+          <span>Agregar a "{{ form.firstName.split(' ')[0] }}"</span>
         </button>
       </form>
     </main>
   </div>
 </template>
+<style>
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 30%;
+  /* position: absolute; */
+  padding-right: 20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+</style>

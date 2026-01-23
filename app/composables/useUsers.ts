@@ -1,11 +1,20 @@
-import { collection, getDocs } from 'firebase/firestore'
+import { addDoc, collection, getDocs, query, serverTimestamp, Timestamp, where } from 'firebase/firestore'
 import { db } from '~/lib/firebase'
 import type { User } from '~/types/user'
 
+interface newUser {
+  firstName: string,
+  lastName: string,
+  email?: string,
+  phoneNumber?: string,
+  address?: string,
+  birthDate: string
+}
 
 export function useUsers() {
   const isLoading = ref<boolean>(false)
   const error = ref<string>('')
+  const { user } = userStore()
 
   const getAll =  async (): Promise<User[]> => {
     isLoading.value = true
@@ -26,16 +35,70 @@ export function useUsers() {
     } catch (e) {
       const err = e as Error
       console.error('Error al cargar usuarios:', e)
-      error.value = err.message
+      setErrorMsg(err.message)
     } finally {
       isLoading.value = false
     }
     return []
   }
 
+  const createUser = async (newUser: newUser) => {
+    isLoading.value = true
+    try {
+      const {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        address,
+        birthDate
+      } = newUser
+
+      let q = query(
+        collection(db, 'users'),
+        where('email', '==', email)
+      )
+      const snap = await getDocs(q)
+      console.log(snap.docs)
+      if (snap.docs) {
+        throw new Error("Email ya existe.");
+        
+      }
+
+      const newUserRef = await addDoc(collection(db, 'users'), {
+        firstName,
+        lastName,
+        email,
+        phoneNumber,
+        address,
+        birthDate,
+        active: true,
+        createdAt: serverTimestamp(),
+        createdBy: user?.uid
+      })
+
+      return newUserRef
+    } catch (e) {
+      const err = e as Error
+      console.error('Error al crear documento: ', err.message)
+      setErrorMsg(err.message)
+    } finally {
+      isLoading.value = false
+    }
+  }
+
+  const setErrorMsg = (msg: string) => {
+    error.value = msg
+    setTimeout(() => {
+      error.value = ''
+    }, 5000)
+  }
+
   return {
     getAll,
     isLoading,
-    error
+    error,
+    createUser,
+    setErrorMsg
   }
 }
