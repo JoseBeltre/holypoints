@@ -1,7 +1,7 @@
-defineNuxtRouteMiddleware(() => {
+export default defineNuxtRouteMiddleware(() => {
   const store = userStore()
 
-  if (store.user !== null || store.user !== undefined){
+  if (store.user){
     return navigateTo('/')
   }
 })
