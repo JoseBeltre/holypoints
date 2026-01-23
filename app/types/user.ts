@@ -1,10 +1,13 @@
 export interface User {
-  uid: string
+  uid?: string
   firstName: string
   lastName: string
-  email: string
-  photoUrl: string
+  email?: string
+  photoUrl?: string
   createdAt: Date
   createdBy: string
-  active: boolean
+  active: boolean,
+  address?: string,
+  phoneNumber?: string,
+  birthDate?: string
 }
