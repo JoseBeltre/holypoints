@@ -3,10 +3,9 @@ import AdventistasLogo from '@/assets/images/isotipo_adventistas_logo.png'
 import JALogo from '@/assets/images/ja_logo.png'
 
 definePageMeta({
-  layout: false
-})
-useHead({
-  title: 'Iniciar Sesión - Holypoints'
+  title: 'Iniciar Sesión - Holypoints',
+  layout: false,
+  middleware: 'guest'
 })
 
 const email = ref<string>('')

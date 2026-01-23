@@ -3,8 +3,9 @@ import SkeletonContainer from '~/components/skeletons/SkeletonContainer.vue'
 import YouthCardSkeleton from '~/components/skeletons/YouthCardSkeleton.vue'
 import type { User } from '~/types/user'
 
-useHead({
-  title: 'Jóvenes - Holypoints'
+definePageMeta({
+  title: 'Jóvenes - Holypoints',
+  middleware: 'auth'
 })
 
 const { isLoading, error, getAll } = useUsers()

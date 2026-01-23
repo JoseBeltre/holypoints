@@ -1,6 +1,6 @@
 <script setup lang="ts">
-useHead({
-  title: 'Tabla de Puntuaciones - Holypoints'
+definePageMeta({
+  title: 'Tabla de Puntuaciones - Holypoints',
 })
 // datos de ejemplo
 const users = [

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { userStore } from '@/stores/userStore'
-useHead({
-  title: 'Inicio - Holypoints'
+definePageMeta({
+  title: 'Inicio - Holypoints',
+  middleware: 'auth'
 })
 const store = userStore()
 const { user } = storeToRefs(store)

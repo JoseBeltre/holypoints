@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 definePageMeta({
   title: 'Agregar nuevo joven',
-  layout: false
+  layout: false,
+  middleware: 'auth'
 })
 
 const { createUser, error } = useUsers()

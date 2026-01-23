@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+definePageMeta({
+  title: 'Recompensas Canjeables - Holypoints',
+  middleware: 'auth'
+})
 const isLogged = ref(true)
 // array de prueba
 const rewards = [
@@ -17,9 +21,6 @@ const rewards = [
     stock: 5
   }
 ]
-useHead({
-  title: 'Recompensas Canjeables - Holypoints'
-})
 </script>
 <template>
   <div>
