@@ -23,7 +23,7 @@ const handleSubmit = () => {
       <img :src="JALogo" alt="JA Logo">
     </div>
     <h1 class="font-jolly text-7xl min-[380px]:text-8xl">Jóvenes M2</h1>
-    <p class="tracking-tight font-light text-white/80 text-center">Sistema para el manejo de los <span class="font-bold text-secondary-400">Holypoints</span></p>
+    <p class="tracking-tight font-light text-white/80 text-center">Sistema para el manejo de los <span class="font-bold bg-secondary-300 text-black px-4 ms-1 py-1 -rotate-2 inline-block rounded-2xl shadow-[3px_3px_0px_0px] shadow-black/40">Holypoints</span></p>
     <form class="flex flex-col gap-4 mt-6 min-[380px]:w-86 w-full" @submit.prevent="handleSubmit">
       <div class="flex flex-col gap-1 w-full">
         <label class="login-lbl" for="email">Correo electrónico</label>
