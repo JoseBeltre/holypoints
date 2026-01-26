@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import { userStore } from '@/stores/userStore'
+import { storeToRefs } from 'pinia'
+import SkeletonContainer from '~/components/skeletons/SkeletonContainer.vue'
 definePageMeta({
   title: 'Inicio - Holypoints',
   middleware: 'auth'
 })
 const store = userStore()
 const { user } = storeToRefs(store)
+const { totalUsers, isLoading } = useUsers()
+const cantUsers = await totalUsers()
 
 </script>
 <template>
@@ -27,7 +31,8 @@ const { user } = storeToRefs(store)
             <IconGem :size="192" class="absolute" stroke-width=".8" />
           </template>
         </KpiCard>
-        <KpiCard :stat="12" text="Jovenes Participando" class-name="!bg-primary-600">
+        <SkeletonContainer v-if="isLoading" />
+        <KpiCard v-else :stat="cantUsers" text="Jovenes Participando" class-name="!bg-primary-600">
           <template #icon>
             <IconUserRound :size="192" class="absolute" stroke-width=".8" fill="#ffffff" />
           </template>
@@ -37,10 +42,10 @@ const { user } = storeToRefs(store)
       <div class="rounded-box">
         <h2 class="text-primary-600 font-bold text-2xl mb-2">Atajos</h2>
         <div class="grid gap-2">
-          <button class="shortcut-btn">
+          <NuxtLink to="/youth" class="shortcut-btn">
             <IconGem stroke-width="1.2" />
             Sumar Holypoints
-          </button>
+          </NuxtLink>
           <NuxtLink to="/youth/add" class="shortcut-btn">
             <IconUserRoundPlus stroke-width="1.2" />
             Registrar Joven
