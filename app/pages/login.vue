@@ -22,14 +22,14 @@ const handleSubmit = () => {
       <img :src="AdventistasLogo" alt="Adventistas Logo">
       <img :src="JALogo" alt="JA Logo">
     </div>
-    <h1 class="font-jolly text-8xl">Jóvenes M2</h1>
-    <p class="tracking-tight font-light text-white/80">Sistema para el manejo de los <span class="font-bold text-secondary-400">Holypoints</span></p>
-    <form class="grid place-content-center gap-4 mt-6 w-86" @submit.prevent="handleSubmit">
-      <div class="flex flex-col gap-1">
+    <h1 class="font-jolly text-7xl min-[380px]:text-8xl">Jóvenes M2</h1>
+    <p class="tracking-tight font-light text-white/80 text-center">Sistema para el manejo de los <span class="font-bold text-secondary-400">Holypoints</span></p>
+    <form class="flex flex-col gap-4 mt-6 min-[380px]:w-86 w-full" @submit.prevent="handleSubmit">
+      <div class="flex flex-col gap-1 w-full">
         <label class="login-lbl" for="email">Correo electrónico</label>
         <input class="login-input" type="email" id="email" v-model="email" required>
       </div>
-      <div class="flex flex-col gap-1">
+      <div class="flex flex-col gap-1 w-full">
         <label class="login-lbl" for="password">Contraseña</label>
         <input class="login-input" type="password" id="password" v-model="password" required>
       </div>

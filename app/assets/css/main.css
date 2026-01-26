@@ -51,7 +51,7 @@
   }
 
   .login-input {
-    @apply border-3 rounded-xl p-3 bg-black/9 w-86 focus:border-secondary-300 focus:text-secondary-200 focus:outline-none shadow-inner shadow-black/35 drop-shadow-md drop-shadow-black/25 transition-colors;
+    @apply border-3 rounded-xl p-3 bg-black/9 focus:border-secondary-300 focus:text-secondary-200 focus:outline-none shadow-inner shadow-black/35 drop-shadow-md drop-shadow-black/25 transition-colors;
   }
 
   .login-btn {
