@@ -50,32 +50,40 @@ export function useUsers() {
       const {
         firstName,
         lastName,
-        email,
-        phoneNumber,
-        address,
-        birthDate
+        email
       } = newUser
+      const collectionRef = collection(db, 'users')
 
+      // Verifica si existe un usuario con el mismo nombre y apellido
+      let q = query(
+        collectionRef,
+        where('firstName', '==', firstName),
+        where('lastName', '==', lastName),
+      )
+      const snap = await getDocs(q)
+      if (snap.docs.length !== 0) {
+        throw new Error("Este joven ya existe.");
+      }
+      // Verifica si existe un usuario con el mismo email
       if (email) {
-        let q = query(
-          collection(db, 'users'),
+        q = query(
+          collectionRef,
           where('email', '==', email)
         )
         const snap = await getDocs(q)
-        console.log(snap.docs)
         if (snap.docs.length !== 0) {
           throw new Error("Email ya existe.");
         }
       }
-
+      // Valida si los datos son correctos con Zod
       const result = await validateUserSchema({
         createdBy: user?.uid,
         ...newUser
       })
-      
+      // Remueve los campos undefined y devuleve un objeto con campo validos
       const cleanedUser = removeUndefined(result)
       
-
+      // Crea un nuevo usuario
       const newUserRef = await addDoc(collection(db, 'users'), {
         ...cleanedUser,
         points: {
