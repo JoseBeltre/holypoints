@@ -1,5 +1,7 @@
 import { addDoc, collection, getCountFromServer, getDocs, query, serverTimestamp, Timestamp, where } from 'firebase/firestore'
+import { ZodError } from 'zod'
 import { db } from '~/lib/firebase'
+import { validateUserSchema } from '~/schemas/users'
 import type { User } from '~/types/user'
 
 interface newUser {
@@ -54,35 +56,48 @@ export function useUsers() {
         birthDate
       } = newUser
 
-      let q = query(
-        collection(db, 'users'),
-        where('email', '==', email)
-      )
-      const snap = await getDocs(q)
-      console.log(snap.docs)
-      if (snap.docs) {
-        throw new Error("Email ya existe.");
-        
+      if (email) {
+        let q = query(
+          collection(db, 'users'),
+          where('email', '==', email)
+        )
+        const snap = await getDocs(q)
+        console.log(snap.docs)
+        if (snap.docs.length !== 0) {
+          throw new Error("Email ya existe.");
+        }
       }
 
+      const result = await validateUserSchema({
+        createdBy: user?.uid,
+        ...newUser
+      })
+      
+      const cleanedUser = removeUndefined(result)
+      
+
       const newUserRef = await addDoc(collection(db, 'users'), {
-        firstName,
-        lastName,
-        email,
-        phoneNumber,
-        address,
-        birthDate,
-        points: 0,
+        ...cleanedUser,
+        points: {
+          jovenes: 0,
+          conquistadores: 0,
+          guias: 0
+        },
         active: true,
         createdAt: serverTimestamp(),
-        createdBy: user?.uid
       })
 
       return newUserRef
     } catch (e) {
-      const err = e as Error
-      console.error('Error al crear documento: ', err.message)
-      setErrorMsg(err.message)
+      if (e instanceof ZodError) {
+        const message = e.issues[0]?.message as string
+        setErrorMsg(message)
+        return
+      }
+      if (e instanceof Error) {
+        setErrorMsg(e.message)
+        return
+      } 
     } finally {
       isLoading.value = false
     }
