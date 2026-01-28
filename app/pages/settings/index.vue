@@ -24,7 +24,7 @@ const { isLoading } = auth
     <main class="bg-gray-50 h-[calc(100dvh-144px)] p-4 rounded-t-2xl pt-14 flex flex-col gap-4 pb-24">
       <div class="text-center leading-2">
         <h2 class="font-bold text-xl text-primary-600">{{ user?.firstName + ' ' + user?.lastName }}</h2>
-        <p class="text-black/60">{{ user }}</p>
+        <p class="text-black/60">{{ user?.email }}</p>
       </div>
       <section class="grid gap-2">
         <SettingsButton to="/">

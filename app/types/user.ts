@@ -9,5 +9,10 @@ export interface User {
   active: boolean,
   address?: string,
   phoneNumber?: string,
-  birthDate?: string
+  birthDate?: string,
+  points?: {
+    jovenes: number,
+    conquistadores: number,
+    guias: number
+  }
 }
