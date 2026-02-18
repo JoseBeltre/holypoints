@@ -10,10 +10,19 @@ definePageMeta({
 
 const { isLoading, error, getAll } = useUsers()
 const users = ref<User[]>([])
+const isSumModalOpen = ref(false)
+
+
+const handleSumModal = () => isSumModalOpen.value = !isSumModalOpen.value
 
 onMounted(async () => {
   users.value = await getAll()
 })
+
+watch(isSumModalOpen, (isOpen) => {
+  document.body.style.overflow = isOpen ? 'hidden' : 'auto'
+})
+
 </script>
 
 <template>
@@ -34,11 +43,51 @@ onMounted(async () => {
       <SearchBar />
       <section class="grid gap-2">
         <YouthCardSkeleton v-if="isLoading" v-for="none in 3" />
-        <YouthCard v-else v-for="user in users" :key="user.uid" :user="user" />
+        <YouthCard
+          v-else
+          v-for="user in users"
+          :key="user.uid"
+          :user="user"
+          :sumPoints="handleSumModal"
+        />
         <div v-if="error" class="text-red-500 text-center py-8">
           Error al cargar usuarios
         </div>
       </section>
     </main>
   </div>
+  <Transition
+    name="modal"
+    :duration="{ enter: 250, leave: 150 }"
+  >
+    <SumPointsModal v-if="isSumModalOpen" :closeModal="handleSumModal" />
+  </Transition>
 </template>
+<style>
+.modal-enter-from .overlay {
+  opacity: 0;
+}
+
+.modal-enter-active .overlay {
+  transition: opacity 0.9s ease;
+}
+
+.modal-enter-to .overlay {
+  opacity: 1;
+}
+
+.modal-enter-from .modal-content {
+  opacity: 0;
+  transform: translateY(1080px) scale(0.1);
+}
+
+.modal-enter-active .modal-content {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-enter-to .modal-content {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+</style>

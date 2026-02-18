@@ -2,6 +2,7 @@
 import type { User } from '~/types/user';
 const props = defineProps<{
   user: User
+  sumPoints: () => void
 }>()
 
 const fullName = computed(() => {
@@ -21,7 +22,7 @@ const fullName = computed(() => {
         <IconHolypoint :size="18" :strokeWidth="1.5" />
       </p>
     </div>
-    <button class="flex items-center justify-center gap-2 p-2 px-2 pe-3 text-sm rounded-lg bg-primary-400/30 text-primary-600 ms-auto cursor-pointer hover:bg-primary-600 hover:text-white transition-colors">
+    <button @click="sumPoints" class="flex items-center justify-center gap-2 p-2 px-2 pe-3 text-sm rounded-lg bg-primary-400/30 text-primary-600 ms-auto cursor-pointer hover:bg-primary-600 hover:text-white transition-colors">
       <IconDiff class="size-5" />
       Sumar
     </button>
