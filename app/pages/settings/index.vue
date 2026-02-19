@@ -11,6 +11,18 @@ const { user } = userStore()
 
 const auth = useAuth()
 const { isLoading } = auth
+
+const roleTitle = computed(() => {
+  if (!user?.ministries) {
+    return user?.email
+  }
+  let name = user?.ministries[0]?.ministryId
+  name = name![0]!.toUpperCase() + name!.substring(1, -1)
+  let role = user.ministries[0]?.role
+  role = role![0]!.toUpperCase() + role!.substring(1, -1)
+  return role + ' de ' + name
+})
+
 </script>
 <template>
   <div class="bg-linear-to-b from-primary-600 to-primary-700">
@@ -24,7 +36,7 @@ const { isLoading } = auth
     <main class="bg-gray-50 h-[calc(100dvh-144px)] p-4 rounded-t-2xl pt-14 flex flex-col gap-4 pb-24">
       <div class="text-center leading-2">
         <h2 class="font-bold text-xl text-primary-600">{{ user?.firstName + ' ' + user?.lastName }}</h2>
-        <p class="text-black/60">{{ user?.email }}</p>
+        <p class="text-black/60">{{ roleTitle }}</p>
       </div>
       <section class="grid gap-2">
         <SettingsButton to="/">

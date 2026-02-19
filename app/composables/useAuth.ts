@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth"
-import { doc, getDoc } from "firebase/firestore"
+import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore"
 import type { User } from "~/types/user"
 
 export function useAuth() {
@@ -47,16 +47,22 @@ export function useAuth() {
             const userRef = doc(db, "users", firebaseUser.uid)
             const userSnapshot = await getDoc(userRef)
 
-            if (userSnapshot.exists()) {
-              store.setUser({
-                uid: firebaseUser.uid,
-                ...userSnapshot.data(),
-              } as User)
-            } else {
+            if (!userSnapshot.exists()) {
               store.setUser(null)
+              return
             }
+            const ministries = await useUsers().getUserMinistries(firebaseUser.uid, 'short')
+
+            store.setUser({
+              uid: firebaseUser.uid,
+              ...userSnapshot.data(),
+              ministries
+            } as User)
+            
+            console.log('user seteado:', store.user)
           } catch (e) {
             store.setUser(null)
+            console.log('Ocurrio un error al obtener el usuario:', e)
           }
 
           resolve()

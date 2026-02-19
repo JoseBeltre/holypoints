@@ -2,6 +2,7 @@ import { addDoc, collection, getCountFromServer, getDocs, query, serverTimestamp
 import { ZodError } from 'zod'
 import { db } from '~/lib/firebase'
 import { validateUserSchema } from '~/schemas/users'
+import type { Membership, MembershipShort } from '~/types/memberships'
 import type { User } from '~/types/user'
 
 interface newUser {
@@ -42,6 +43,30 @@ export function useUsers() {
       isLoading.value = false
     }
     return []
+  }
+
+  const getUserMinistries = async (
+    userId: string,
+    output: 'long' | 'short' = 'long'
+  ): Promise<Membership[] | MembershipShort[]> => {
+
+    let q = query(
+      collection(db, 'memberships'),
+      where('userId','==', userId)
+    )
+    const snap = await getDocs(q)
+
+    if (output === 'long') {
+      return snap.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }))  as Membership[]
+    }
+    return snap.docs.map(doc => ({
+        ministryId: doc.data().ministryId,
+        role: doc.data().role
+      })) as MembershipShort[]
+
   }
 
   const createUser = async (newUser: newUser) => {
@@ -134,6 +159,7 @@ export function useUsers() {
 
   return {
     getAll,
+    getUserMinistries,
     isLoading,
     error,
     createUser,

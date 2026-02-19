@@ -29,9 +29,12 @@ export default defineNuxtPlugin(() => {
           return
         }
 
+        const ministries = await useUsers().getUserMinistries(firebaseUser.uid, 'short')
+
         const user: User = {
           uid: firebaseUser.uid,
-          ...userSnapshot.data()
+          ...userSnapshot.data(),
+          ministries
         } as User
 
         console.log('Usuario cargado correctamente:', user)
