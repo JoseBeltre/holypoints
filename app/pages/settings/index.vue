@@ -17,9 +17,9 @@ const roleTitle = computed(() => {
     return user?.email
   }
   let name = user?.ministries[0]?.ministryId
-  name = name![0]!.toUpperCase() + name!.substring(1, -1)
+  name = name![0]!.toUpperCase() + name!.slice(1)
   let role = user.ministries[0]?.role
-  role = role![0]!.toUpperCase() + role!.substring(1, -1)
+  role = role![0]!.toUpperCase() + role!.slice(1)
   return role + ' de ' + name
 })
 
